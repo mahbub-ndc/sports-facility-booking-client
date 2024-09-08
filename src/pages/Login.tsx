@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { verifyToken } from "../utils/verifyToken";
 import { useAppDispatch } from "../redux/hooks";
-import { setUser } from "../redux/features/auth/AuthSlice";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
 import { toast } from "sonner";
 
 type Inputs = {
@@ -35,7 +35,7 @@ const Login = () => {
 
       const res = await login(userInfo).unwrap();
       console.log(res.token);
-      const user = verifyToken(res.token);
+      const user = verifyToken(res.token) as TUser;
 
       dispatch(setUser({ user: user, token: res.token }));
       toast.success("Logged in", { duration: 2000 });

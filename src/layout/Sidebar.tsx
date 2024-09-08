@@ -1,8 +1,10 @@
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 
 import { userPaths } from "../routes/user.routes";
 import { adminPaths } from "../routes/admin.routes";
 import { SidebarCreator } from "../utils/SidebarCreator";
+import { useAppSelector } from "../redux/hooks";
+import { getCurrentUser } from "../redux/features/auth/authSlice";
 
 const { Sider } = Layout;
 
@@ -12,7 +14,9 @@ const userRole = {
 };
 
 const Sidebar = () => {
-  const role = "user";
+  const user = useAppSelector(getCurrentUser);
+
+  const role = user?.role;
   let sidebarItems;
 
   switch (role) {

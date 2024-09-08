@@ -1,5 +1,6 @@
 import AdminDashboard from "../pages/admin/AdminDashboard";
-import CreateAdmin from "../pages/admin/CreateAdmin";
+
+import AddFacility from "../pages/admin/AddFacility";
 
 export const adminPaths = [
   {
@@ -8,12 +9,12 @@ export const adminPaths = [
     element: <AdminDashboard />,
   },
   {
-    name: "User Management",
+    name: "Facility",
     children: [
       {
-        name: "Create Admin",
-        path: "create-admin",
-        element: <CreateAdmin />,
+        name: "Create Facility",
+        path: "create-facility",
+        element: <AddFacility />,
       },
     ],
   },
