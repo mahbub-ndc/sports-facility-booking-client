@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Button, Layout, Menu } from "antd";
 
 import { userPaths } from "../routes/user.routes";
 import { adminPaths } from "../routes/admin.routes";

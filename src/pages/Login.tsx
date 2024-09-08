@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "antd";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { verifyToken } from "../utils/verifyToken";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/features/auth/AuthSlice";
+import { toast } from "sonner";
 
 type Inputs = {
   email: string;
@@ -19,22 +21,28 @@ const Login = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const [login, { error }] = useLoginMutation();
+  const [login] = useLoginMutation();
 
-  //   console.log("data=>", data);
-  console.log("error=>", error);
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const userInfo = {
-      email: data.email,
-      password: data.password,
-    };
+    // const toastId = toast.loading("Logging in");
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
 
-    const res = await login(userInfo).unwrap();
-    console.log(res.token);
-    const user = verifyToken(res.token);
+      const res = await login(userInfo).unwrap();
+      console.log(res.token);
+      const user = verifyToken(res.token);
 
-    dispatch(setUser({ user: user, token: res.token }));
+      dispatch(setUser({ user: user, token: res.token }));
+      toast.success("Logged in", { duration: 2000 });
+      navigate(`/${user.role}/dashboard`);
+    } catch (error) {
+      toast.error("Something went wrong", { duration: 2000 });
+    }
   };
 
   // console.log(watch("email")); // watch input value by passing the name of it
