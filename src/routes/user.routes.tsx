@@ -1,7 +1,8 @@
 import CancelBooking from "../pages/user/CancelBooking";
 import CreateBooking from "../pages/user/CreateBooking";
 import UserDashboard from "../pages/user/UserDashboard";
-import ViewBooking from "../pages/user/ViewBooking";
+import ViewBooking from "../pages/user/SingleBooking";
+import SingleBooking from "../pages/user/SingleBooking";
 
 export const userPaths = [
   {
@@ -20,7 +21,7 @@ export const userPaths = [
       {
         name: "View Booking",
         path: "view-booking",
-        element: <ViewBooking></ViewBooking>,
+        element: <SingleBooking></SingleBooking>,
       },
       {
         name: "Cancel Booking",

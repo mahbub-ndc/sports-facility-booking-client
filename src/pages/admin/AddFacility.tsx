@@ -21,7 +21,7 @@ const AddFacility = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const [addFacilydata] = useCreateFacilityMutation();
+  const [addFacilitydata] = useCreateFacilityMutation();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     //console.log(data);
@@ -36,7 +36,7 @@ const AddFacility = () => {
     console.log(facilityData);
 
     try {
-      const res = await addFacilydata(facilityData);
+      const res = await addFacilitydata(facilityData);
       console.log(res);
       if (res.error) {
         toast.error(res.error.data.message);

@@ -2,6 +2,8 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 
 import AddFacility from "../pages/admin/AddFacility";
 
+import ViewBookings from "../pages/admin/ViewBookings";
+
 export const adminPaths = [
   {
     name: "Dashboard",
@@ -15,6 +17,16 @@ export const adminPaths = [
         name: "Create Facility",
         path: "create-facility",
         element: <AddFacility />,
+      },
+    ],
+  },
+  {
+    name: "Bookings",
+    children: [
+      {
+        name: "Bookings",
+        path: "bookings",
+        element: <ViewBookings />,
       },
     ],
   },

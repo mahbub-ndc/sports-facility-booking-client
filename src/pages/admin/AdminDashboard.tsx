@@ -2,7 +2,7 @@ const AdminDashboard = () => {
   return (
     <>
       <section>
-        <h2 className="text-2xl">Hi! Welcome</h2>
+        <h2 className="text-3xl">Welcome back admin!</h2>
       </section>
     </>
   );
